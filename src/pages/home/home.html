@@ -5,16 +5,28 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <button (click)="test()">click me </button>
-  <button (click)="testAddData()">testAddData</button>
-  <button (click)="testGetData()">testGetData</button>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div *ngIf="ifrender" style="margin: 20px">
+    <button (click)="test()">click me</button>
+    <button (click)="testAddData()">testAddData</button>
+    <button (click)="testGetData()">testGetData</button>
+  </div>
+  <div>
+    <h3>上传图片显示缩略图</h3>
+    <img
+      height="100px"
+      width="100px"
+      [src]="_d.bypassSecurityTrustUrl(imgsrc)"
+    />
+    <input type="file" (change)="fileChange($event)" />
+  </div>
+
+  <div *ngIf="false">
+    <p>your input value is :{{ formValue }}</p>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <input placeholder="用途" name="title1" ngModel />
+      <button type="submit">提交</button>
+      <!-- <p>Form value: {{ f.value | json }}</p>   检验数据-->
+      <!-- [disabled]="!f.form.valid" -->
+    </form>
+  </div>
 </ion-content>

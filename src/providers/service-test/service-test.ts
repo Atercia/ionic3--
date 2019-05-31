@@ -20,6 +20,7 @@ const httpOptions = {
 
 @Injectable()
 export class ServiceTestProvider {
+  buildUrl = './xjh/httpservice/xjh.php';
   windowsLocalHostUrl = 'http://localhost:8080/httpservice/xjh.php';
   url = this.windowsLocalHostUrl;
   private handleError: HandleError;

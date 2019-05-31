@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
+import { DomSanitizer } from '@angular/platform-browser';
 /* import { HttpserviceService } from '../../provider/http/httpservice.service'
  */
 import { ServiceTestProvider } from "../../providers/service-test/service-test";
@@ -8,8 +9,13 @@ import { ServiceTestProvider } from "../../providers/service-test/service-test";
   templateUrl: "home.html"
 })
 export class HomePage {
+  ifrender=true;
+  public formValue='';
+  imgsrc = 'https://c.staticblitz.com/assets/client/components/SideMenu/blitz_logo-11cebad97cad4b50bc955cf72f532d1b.png';
+
   constructor(
     public navCtrl: NavController,
+    public _d: DomSanitizer,
     public httpservice: ServiceTestProvider
   ) {}
   test() {
@@ -28,5 +34,16 @@ export class HomePage {
     this.httpservice.getData().subscribe(val => {
       console.log("POST call successful value returned in body", val);
     });
+  }
+
+  onSubmit(f){
+    this.formValue = f.value.title1;
+    console.log(`value：${f.value.title1}`);
+  }
+
+  fileChange(e) {
+    const file = e.srcElement.files[0]; // 获取图片这里只操作一张图片
+    this.imgsrc = window.URL.createObjectURL(file); // 获取上传的图片临时路径
+    console.log(e)
   }
 }
