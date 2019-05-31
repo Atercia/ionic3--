@@ -1,1 +1,5 @@
 first day 
+ionic -v : 3.2.2    "module": "es2015",
+Maybe it's need update
+
+[bug] 服务引用的模块，要和app.module里面注册的模块，是同一个。不然名字相同内容不同也不行
